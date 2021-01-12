@@ -1,8 +1,6 @@
 import React from "react";
-
-import { deletePhoto } from "../../services/photoServices";
+import { deleteFile } from "../../services/fileServices";
 import { useGlobalState } from "../../config/globalState";
-
 import ControlledCarousel from "../ControlledCarousel/ControlledCarousel";
 import { Container } from "react-bootstrap";
 import Header from "../Header/Header";
@@ -10,7 +8,9 @@ import Header from "../Header/Header";
 const Photo = (props) => {
   // console.log("props.location.state: ",props.location.state)
   const { store, dispatch } = useGlobalState();
-  const { photos } = store;
+  const { photos, fileState } = store;
+
+  const { type } = fileState;
   // !accessing photo that is being passed from Gallery component
   console.log("props=>", props);
   const { history } = props;
@@ -22,7 +22,7 @@ const Photo = (props) => {
     const updatedPhotos = photos.filter((p) => p._id !== photo._id);
     console.log("updatedPhotos=>", updatedPhotos);
 
-    deletePhoto(photo._id)
+    deleteFile(photo._id, type)
       .then((response) => {
         console.log("response=>", response);
         dispatch({
@@ -36,17 +36,6 @@ const Photo = (props) => {
 
   return (
     <div>
-      {/* <h1>Gallery</h1>
-      <div>
-        <img src={photo.url} alt="" />
-        <h4>{photo.description}</h4>
-        <BackButton history={history} />
-        {role === "Admin" ? (
-          <ButtonComponent clicked={handleDelete} record={photo}>
-            Delete
-          </ButtonComponent>
-        ) : null} */}
-      {/* </div> */}
       <Container className="main-container">
         <Header history={history} showButton={"Delete"} clicked={handleDelete}>
           Gallery
