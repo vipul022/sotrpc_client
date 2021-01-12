@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 // import { uploadPhotoToS3 } from "../../services/photoServices";
 import Header from "../Header/Header";
 // import { addNewPhoto } from "../../services/photoServices";
@@ -17,13 +17,30 @@ const NewPhoto = ({ history }) => {
   console.log("success=>", success);
   console.log("errorMessage=>", errorMessage);
 
+  useEffect(() => {
+    const updatedData = {
+      ...fileState,
+      description: "",
+      type: "photos",
+      success: false,
+    };
+    dispatch({
+      type: "setFileState",
+      data: updatedData
+    });
+    dispatch({
+      type: "setErrorMessage",
+      data: null
+    });
+  }, []);
+
+
+
   const handleDescriptionChange = (event) => {
     const { name, value } = event.target;
     const updatedData = {
       ...fileState,
       [name]: value,
-      type: "photos",
-      success: false,
     };
     // !whenever user enters a description of another photo set success message and error message should disappear
     dispatch({
@@ -40,6 +57,7 @@ const NewPhoto = ({ history }) => {
     const updatedData = {
       ...fileState,
       selectedFile: event.target.files[0],
+      success: false,
     };
     dispatch({
       type: "setFileState",

@@ -42,7 +42,7 @@ const uploadFileToS3 = async (signedRequest, file, options, id, type) => {
     // !delete photo from db incase S3 bucket throws an error while saving the photo
     .catch((error) => {
       deleteFileFromDb(id, type);
-      alert("ERROR " + JSON.stringify(error));
+      alert("ERROR FROM S3" + JSON.stringify(error));
     });
   return res;
 };
@@ -96,15 +96,15 @@ const uploadFile = (fileState, dispatch) => {
           console.log(error);
           dispatch({
             type: "setErrorMessage",
-            data: "There was a problem saving the photo to S3",
+            data: `There was a problem saving the photo to S3, code ${error.response.status}, ${error.response.statusText}`
           });
         });
     })
     .catch((error) => {
-      console.log(error);
+      console.log("error.response=>", error.response);
       dispatch({
         type: "setErrorMessage",
-        data: "There was a problem saving the photo to the server",
+        data: `There was a problem saving the photo to the server, code ${error.response.status}, ${error.response.statusText}`,
       });
     });
 };
