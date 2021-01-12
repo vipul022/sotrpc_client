@@ -10,8 +10,7 @@ import Header from "../Header/Header";
 const Photo = (props) => {
   // console.log("props.location.state: ",props.location.state)
   const { store, dispatch } = useGlobalState();
-  const { photos, LoggedInUser } = store;
-  const { role } = LoggedInUser;
+  const { photos } = store;
   // !accessing photo that is being passed from Gallery component
   console.log("props=>", props);
   const { history } = props;

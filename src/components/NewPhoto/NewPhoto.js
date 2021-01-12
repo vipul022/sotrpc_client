@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { uploadPhotoToS3 } from "../../services/photoServices";
 import Header from "../Header/Header";
 import { addNewPhoto } from "../../services/photoServices";
-import { Form, Container, Row, Col, Button, Alert } from "react-bootstrap";
+import { Form, Container, Button, Alert } from "react-bootstrap";
 
 // ! reference taken from https://medium.com/@khelif96/uploading-files-from-a-react-app-to-aws-s3-the-right-way-541dd6be689
 const NewPhoto = ({ history }) => {

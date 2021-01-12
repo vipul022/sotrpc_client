@@ -11,8 +11,7 @@ import Header from "../Header/Header";
 
 const Gallery = ({ history }) => {
   const { store, dispatch } = useGlobalState();
-  const { photos, LoggedInUser } = store;
-  const { role } = LoggedInUser;
+  const { photos } = store;
   console.log("photos=>", photos);
 
   const fetchPhotos = () => {
