@@ -13,7 +13,7 @@ const addNewFile = async ({ fileName, fileType, description, type }) => {
 };
 
 const deleteFile = async (id, type) => {
-  console.log("inside deletefile=>");
+  console.log("inside deletefile, type is=>", type);
   const response = await api.delete(`/${type}/${id}`, { params: { id } });
   console.log("response inside deletefile in file services=> ", response);
   return response;
