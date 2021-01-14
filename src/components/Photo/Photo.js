@@ -1,8 +1,8 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { deleteFile } from "../../services/fileServices";
 import { useGlobalState } from "../../config/globalState";
 import ControlledCarousel from "../ControlledCarousel/ControlledCarousel";
-import { Container, Alert} from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
 import Header from "../Header/Header";
 
 const Photo = (props) => {
@@ -11,6 +11,7 @@ const Photo = (props) => {
   const { photos, fileState, errorMessage } = store;
 
   const { type } = fileState;
+  console.log("type inside Photo.js=>", type);
   // !accessing photo that is being passed from Gallery component
   console.log("props=>", props);
   const { history } = props;
@@ -24,20 +25,19 @@ const Photo = (props) => {
     };
     dispatch({
       type: "setFileState",
-      data: updatedData
+      data: updatedData,
     });
     dispatch({
       type: "setErrorMessage",
-      data: null
+      data: null,
     });
   }, []);
-
 
   const handleDelete = (event) => {
     event.preventDefault();
     const updatedPhotos = photos.filter((p) => p._id !== photo._id);
     console.log("updatedPhotos=>", updatedPhotos);
-    console.log("inside handle delete in Photo.js, type is =>", type)
+    console.log("inside handle delete in Photo.js, type is =>", type);
     deleteFile(photo._id, type)
       .then((response) => {
         console.log("response=>", response);
@@ -50,9 +50,9 @@ const Photo = (props) => {
         console.log(error);
         dispatch({
           type: "setErrorMessage",
-          data: `There was a problem saving the photo to S3, code ${error.response.status}, ${error.response.statusText}`
+          data: `There was a problem saving the photo to S3, code ${error.response.status}, ${error.response.statusText}`,
         });
-      })
+      });
     history.push("/photos");
   };
 
@@ -64,11 +64,11 @@ const Photo = (props) => {
         </Header>
       </Container>
       <Container className="carousel-container">
-      {errorMessage && (
-        <Alert variant="danger">
-          <p>{errorMessage}</p>
-        </Alert>
-      )}
+        {errorMessage && (
+          <Alert variant="danger">
+            <p>{errorMessage}</p>
+          </Alert>
+        )}
         <ControlledCarousel index={index} photos={photos} />
       </Container>
     </div>
