@@ -15,6 +15,7 @@ const addNewFile = async ({ fileName, fileType, description, type }) => {
 const deleteFile = async (id, type) => {
   console.log("inside deletefile, type is=>", type);
   const response = await api.delete(`/${type}/${id}`, { params: { id } });
+
   console.log("response inside deletefile in file services=> ", response);
   return response;
 };
@@ -96,7 +97,7 @@ const uploadFile = (fileState, dispatch) => {
           console.log(error);
           dispatch({
             type: "setErrorMessage",
-            data: `There was a problem saving the photo to S3, code ${error.response.status}, ${error.response.statusText}`
+            data: `There was a problem saving the photo to S3, code ${error.response.status}, ${error.response.statusText}`,
           });
         });
     })

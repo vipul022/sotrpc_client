@@ -2,13 +2,9 @@
 
 A Joint Venture by Jason Stacy and Vipul Seth for Coder Academy Melbourne.
 
-
-
 ### Site address:
 
 https://southoftheriverpottersclub.herokuapp.com
-
-
 
 ### GitHub Repositories:
 
@@ -26,10 +22,6 @@ All history of our work can therefore be seen up until the 11 Jan 2021 in the fi
 
 For clarity, this README will exist in all three repositories.
 
-
-
-
-
 ### Task Delegation Methodology
 
 Vipul and Jason used an Agile Scrum planning methodology. After meeting with the client, they had a list of features and functionality that were required. As the client wanted guarantees that we were not able to provide given Jason and Vipul's expertise, time frame and unknowns of future work commitments, they decided that they would probably not end up using the product we provided. Vipul and Jason felt however, that it would be worthwhile treating the project as though it was still required. 
@@ -41,18 +33,31 @@ Vipul and Jason had regular sprint meetings once a week where they would detail 
 ). Vipul and Jason also had continuous communication with each other via Linked-in messaging and meetings most days. In this way, they were kept up to date with problems they were having and tasks that were being completed. On many occasions, when one team member was having difficulty, they would use Discord to share screens and pair program. This worked extremely well.
 
 
+### Screenshots of your Trello board throughout the duration of the project:
 
+![Tello-1](./docs/trello-board/Trello-1.png)
 
+![Tello-2](./docs/trello-board/Trello-2.png)
 
+![Tello-3](./docs/trello-board/Trello-3.png)
 
+![Tello-4](./docs/trello-board/Trello-4.png)
 
+![Tello-5](./docs/trello-board/Trello-5.png)
 
+![Tello-6](./docs/trello-board/Trello-6.png)
 
+![Tello-7](./docs/trello-board/Trello-7.png)
 
+![Tello-8](./docs/trello-board/Trello-8.png)
 
+![Tello-9](./docs/trello-board/Trello-9.png)
 
+![Tello-10](./docs/trello-board/Trello-10.png)
 
-*from part A:
+![Tello-11](./docs/trello-board/Trello-11.png)
+
+from part A:
 
 # T3A2-A - Full Stack App (Part A)
 
@@ -102,9 +107,6 @@ The South of the River Potters Club (SOTRPC) is undergoing some renovations to s
 
 - Calendar of events - All upcoming events and classes displayed in a calendar type arrangement.
 
-
-
-
 ##### Target audience
 
 Primarily SOTRPC members and prospective members as well as anyone interested in Pottery.
@@ -115,18 +117,15 @@ Primarily SOTRPC members and prospective members as well as anyone interested in
 
 - Mongo DB (Database with 5 collections)
 
-
 - Mongodb Atlas (Online hosting site for the DB)
 - Mongoose (Object Data Modeling library)
 - AWS S3 (Buckets for persistent storage of photos and files)
 - Express (Node JS Framework)
-- Node JS  (Runtime environment)
+- Node JS (Runtime environment)
 - Passport (Authentication)
 - Express-session (Cookie storage middleware)
 - Nodemon (Development Server restarter)
 - Heroku (Online host for back-end)
-
-
 
 ###### Frontend:
 
@@ -135,14 +134,10 @@ Primarily SOTRPC members and prospective members as well as anyone interested in
 - Axios (API connection to Backend)
 - Netlify (Online host for Front-end)
 
-
-
 ###### Testing:
 
 - Jest (Back-end unit testing)
 - React testing library (Front end unit testing)
-
-
 
 ###### Documentation and Planning:
 
@@ -150,27 +145,18 @@ Primarily SOTRPC members and prospective members as well as anyone interested in
 - Miro (Wireframe drawing application)
 - Lucid Chart (Dataflow and Architecture diagrams)
 
-
-
-
 ###### Workflow
 
 - Git (Version Control)
 - GitHub (Version Control Hosting)
 
-
-
 ### Dataflow Diagram
 
 ![DataFlow Diagram](./docs/DFD.png)
 
-
-
 ### Application Architecture Diagram
 
 ![Application Architecture Diagram](./docs/AAD.png)
-
-
 
 ### User Stories
 
@@ -218,8 +204,6 @@ One day her husband told her about the nearby pottery club and she got very exci
 
 - Be able to view members details.
 
-  
-
 #### Sandra (Potential Member)
 
 Sandra is a nurse that is looking to start a new hobby. She has a cat called Mittens who she loves dearly and would like to immortalise in clay. She has a friend in the club who has recommended that she take a look at the South of the River Potters Club website and perhaps take some classes. She's not very tech savvy but has been given a tablet for her birthday which she is enjoying. Sandra is keen to become a member and become more involved with the club if she enjoys the classes and other members. She's keen to discover more information about the club and what membership offers.
@@ -231,7 +215,7 @@ Sandra is a nurse that is looking to start a new hobby. She has a cat called Mit
 - A good user interface, so that I can navigate to different parts of the website easily on my tablet.
 - View the history of the club so I can get an idea how long it has been going and how likely it will continue if I were to become a member.
 - See what classes are available if I did become a member.
-- View the photos in the gallery to see examples of what  members create.
+- View the photos in the gallery to see examples of what members create.
 - Sign up to become a member if I should choose to do so.
 
 ###### She should not:
@@ -241,15 +225,9 @@ Sandra is a nurse that is looking to start a new hobby. She has a cat called Mit
 - View any minutes from club meetings until a member.
 - View any past newsletters until a member.
 
-
-
 ### Wireframes for multiple standard screen sizes, created using industry standard software
 
-
-
 Access Miro board here: https://miro.com/app/board/o9J_lec-hEk=/
-
-
 
 ![](docs/wireframes/1.png)
 
@@ -313,11 +291,7 @@ Access Miro board here: https://miro.com/app/board/o9J_lec-hEk=/
 
 ![](docs/wireframes/31.png)
 
-
-
-
-
-###### 
+######
 
 ### Screenshots of your Trello board throughout the duration of the project
 

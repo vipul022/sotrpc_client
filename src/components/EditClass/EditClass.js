@@ -39,6 +39,7 @@ const EditClass = (props) => {
   }, []);
   function handleChange(event) {
     const name = event.target.name;
+    console.log("name inside editclass=>,", name);
     const value = event.target.value;
     setFormState({
       ...formState,
