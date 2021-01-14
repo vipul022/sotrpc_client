@@ -21,7 +21,7 @@ const deleteFile = async (id, type) => {
 
 // ! this function will delete file from db in case s3 bucket returns an error while saving the file
 const deleteFileFromDb = (id, type) => {
-  console.log("inside deleteFileFromDb=>");
+  console.log("inside deleteFileFromDb=> type is =>", type);
   deleteFile(id, type)
     .then((response) => {
       console.log("response=>", response);
