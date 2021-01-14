@@ -2,6 +2,52 @@
 
 A Joint Venture by Jason Stacy and Vipul Seth for Coder Academy Melbourne.
 
+
+
+### Site address:
+
+https://southoftheriverpottersclub.herokuapp.com
+
+
+
+### GitHub Repositories:
+
+Note that we started development with the front end and back end in a single repository separated into client and server folders:
+
+https://github.com/drumovski/SOTRPC-Part-B
+
+Upon deployment testing on the 11 Jan 2021, We decided to split the two up into separate repositories to allow for easier deployment:
+
+https://github.com/drumovski/sotrpc_server
+
+https://github.com/drumovski/sotrpc_client
+
+All history of our work can therefore be seen up until the 11 Jan 2021 in the first combined repository (SOTRPC-Part-B) and everything after the 11 Jan 2021 in the separated 2 repositories (sotrpc_server, sotrpc_client).
+
+For clarity, this README will exist in all three repositories.
+
+
+
+
+
+### Task Delegation Methodology
+
+At the beginning of planing, we decided to split up tasks in to front end and back end. Vipul wanted to do front end as he 
+
+
+
+
+
+
+
+
+
+
+
+*from part A:
+
+# T3A2-A - Full Stack App (Part A)
+
 ### Description of your website
 
 This is a Website for the South of the River Potters Club which is a pottery club in Alfred Cove, Western Australia.
