@@ -28,9 +28,15 @@ Vipul and Jason used an Agile Scrum planning methodology. After meeting with the
 
 At the beginning of planing, Vipul and Jason decided to split up tasks in to front end and back end. Vipul wanted to do front end as he was more interested in working in that field. Jason didn't mind so agreed to do the back end. As the project developed, it was clear that more work would be required in the front end so Jason, after completing the back end, started helping with the front end. 
 
-Vipul and Jason had regular sprint meetings once a week where they would detail what had been done, what worked well and what needed improvement. They also chose tasks for the upcoming sprint. Although the client was not involved during these meetings, Jason and Vipul were in regular contact with the client, showing them the wireframes, getting feedback and clarification on features, as well as a meeting with them to demonstrate an early product deployment. A video of this meeting is provided [here](https://drive.google.com/open?id=1NQYaO1Wfuxrnj1zhIBiq6aTX2B3EbVDK
+Vipul and Jason had regular sprint meetings once a week where they would detail what had been done, what worked well and what needed improvement. They also chose tasks for the upcoming sprint. Although the client was not involved during these meetings, Jason and Vipul were in regular contact with the client, showing them the wireframes, getting feedback and clarification on features, as well as a meeting with them to demonstrate an early product deployment. A video of this meeting is provided [here](https://drive.google.com/open?id=1NQYaO1Wfuxrnj1zhIBiq6aTX2B3EbVDK). Vipul and Jason also had continuous communication with each other via Linked-in messaging and meetings most days. In this way, they were kept up to date with problems they were having and tasks that were being completed. On many occasions, when one team member was having difficulty, they would use Discord to share screens and pair program. This worked extremely well.
 
-). Vipul and Jason also had continuous communication with each other via Linked-in messaging and meetings most days. In this way, they were kept up to date with problems they were having and tasks that were being completed. On many occasions, when one team member was having difficulty, they would use Discord to share screens and pair program. This worked extremely well.
+
+
+### Testing
+
+Screenshot of manual server testing via postman:
+
+![](docs/postman_testing.png)
 
 
 ### Screenshots of your Trello board throughout the duration of the project:
