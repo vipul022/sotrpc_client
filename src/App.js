@@ -18,6 +18,7 @@ import Photo from "./components/Photo/Photo";
 import Footer from "./components/Footer/Footer";
 import History from "./components/History/History";
 import "./styles/app.scss";
+// ! set initial global state for the app
 const App = () => {
   const initialState = {
     classes: [],
