@@ -1,4 +1,4 @@
-# Can't see new or delete buttonsT3A2-B - Full Stack App (Part B)
+# T3A2-B - Full Stack App (Part A)
 
 A Joint Venture by Jason Stacy and Vipul Seth for Coder Academy Melbourne.
 
