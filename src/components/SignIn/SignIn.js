@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import { Form, Container, Button, Alert } from "react-bootstrap";
 
 const SignIn = ({ history }) => {
-  // !extracting dispatch from global state(store)
+  // !extracting dispatch from global state
   const { dispatch } = useGlobalState();
 
   const initialFormState = {
@@ -18,27 +18,22 @@ const SignIn = ({ history }) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    // console.log("name=>", name);
-    // console.log("value=>", value);
+    const { name, value } = event.target;
+
     setUserDetails({
       ...userDetails,
       [name]: value,
     });
   };
-  console.log("userDetails>", userDetails);
 
-  //!loginUser is a function that hit the backend route and save data to the db
+  //!loginUser is a function that hit the backend api and save data to the db
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUser(userDetails)
       .then((data) => {
-        console.log("data=>", data);
-
         const LoggedInUser = data.user;
 
-        // !changing states of loggedInUser and loggedInUserRole
+        // !changing state of loggedInUser with dispatch
         dispatch({
           type: "setLoggedInUser",
           data: LoggedInUser,

@@ -10,8 +10,7 @@ const Gallery = ({ history }) => {
   const { store, dispatch } = useGlobalState();
   const { photos } = store;
 
-  console.log("photos=>", photos);
-
+  // ! fetch all photos from back end (db) and set the state
   const fetchPhotos = () => {
     getAllPhotos()
       .then((photoData) => {
@@ -24,7 +23,6 @@ const Gallery = ({ history }) => {
   };
 
   useEffect(() => {
-    console.log("inside useEffect");
     fetchPhotos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,7 +37,7 @@ const Gallery = ({ history }) => {
               to={{
                 pathname: `/photos/${photo._id}`,
                 state: { photo: photo, index: index },
-                // !sending photo as photo  to the pathname
+                // !sending photo and index to the pathname (Photo component)
               }}
             >
               <Image
