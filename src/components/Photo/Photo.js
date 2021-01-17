@@ -29,6 +29,7 @@ const Photo = (props) => {
       type: "setErrorMessage",
       data: null,
     });
+    // eslint-disable-next-line
   }, []);
 
   const handleDelete = (event) => {

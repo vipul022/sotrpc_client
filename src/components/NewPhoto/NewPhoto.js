@@ -28,6 +28,7 @@ const NewPhoto = ({ history }) => {
       type: "setErrorMessage",
       data: null,
     });
+    // eslint-disable-next-line 
   }, []);
 
   const handleDescriptionChange = (event) => {

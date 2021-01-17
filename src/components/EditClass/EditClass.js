@@ -34,6 +34,7 @@ const EditClass = (props) => {
       maxNumber: cl.maxNumber,
       teacher: cl.teacher,
     });
+    // eslint-disable-next-line
   }, []);
   function handleChange(event) {
     const { name, value } = event.target;

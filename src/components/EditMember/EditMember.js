@@ -39,6 +39,7 @@ const EditMember = (props) => {
       paid: member.paid,
       role: member.role,
     });
+    // eslint-disable-next-line
   }, []);
 
   function handleChange(event) {
