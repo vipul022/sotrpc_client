@@ -12,15 +12,12 @@ const Classes = ({ history }) => {
   // !useGlobalState is used to access store and dispatch globally which are defined in app.js
   const { store, dispatch } = useGlobalState();
   const { classes, LoggedInUser } = store;
-  console.log("classes initially=> ", classes);
-  console.log("loggedInUser=>", LoggedInUser);
+
   const { role } = LoggedInUser;
-  console.log("role=>", role);
+
   const fetchClasses = () => {
-    console.log("in fetchClasses");
     getAllClasses()
       .then((classData) => {
-        console.log("inside fetchClasses classData=> ", classData);
         dispatch({
           type: "setClasses",
           data: classData,
@@ -28,27 +25,20 @@ const Classes = ({ history }) => {
       })
       .catch((error) => console.log(error));
   };
-
+  // ! When component initially renders, fetch classes from backend
   useEffect(() => {
-    console.log("inside useEffect before fetchClasses()");
     fetchClasses();
-
-    console.log("inside useEffect after fetchClasses()");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("classes=>", classes);
 
   const handleDelete = (event) => {
     event.preventDefault();
-    console.log("event.target=>", event.target.dataset.id);
     // !event.target.dataset.id is used to retrieve the id of the particular class
     const id = event.target.dataset.id;
     const updatedClasses = classes.filter((c) => c._id !== id);
-    console.log("updatedclasses=>", updatedClasses);
 
     deleteClass(id)
       .then((response) => {
-        console.log("res=>", response);
         dispatch({
           type: "setClasses",
           data: updatedClasses,
@@ -58,19 +48,12 @@ const Classes = ({ history }) => {
   };
   const handleEdit = (event) => {
     event.preventDefault();
-    console.log(
-      "event.target.dataset.msg in handleEdit=>",
-      event.target.dataset.id
-    );
     const id = event.target.dataset.id;
     history.push(`/classes/edit/${id}`);
   };
-  console.log("classes=>", classes);
+
   // ! function for conditionally rendering delete and edit buttons
   const showDeleteEdit = (c) => {
-
-    console.log("Logged=> ", LoggedInUser);
-    
     return role === "Admin" ? (
       <>
         <ButtonComponent clicked={handleDelete} record={c}>
@@ -87,13 +70,11 @@ const Classes = ({ history }) => {
     history.push("/classes/register");
   };
 
+  // ! Conditionally set class to button for styling
   const classButtons = role === "Admin" ? "class-buttons" : null;
   const content =
     classes &&
     classes.map((c) => {
-      console.log("inside content");
-      // console.log("c=> ", c);
-
       return (
         <div key={c._id}>
           <Container className="class-card">
@@ -103,11 +84,7 @@ const Classes = ({ history }) => {
             <p>Maximum number of students: {c.maxNumber}</p>
             <div className={classButtons}>
               {showDeleteEdit(c)}
-              <ButtonComponent
-                // className="sign-up-button"
-                clicked={handleClick}
-                record={c}
-              >
+              <ButtonComponent clicked={handleClick} record={c}>
                 Sign up for this class
               </ButtonComponent>
             </div>

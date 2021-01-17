@@ -32,7 +32,7 @@ const NewClass = ({ history }) => {
 
   // !creating nextId for add a new class, this function was used earlier to test the component with dummy data
   // function getNextId() {
-  //   // console.log("classes in getNextId=>", classes);
+
   //   const ids = classes.map((c) => c._id);
   //   return ids.sort()[ids.length - 1] + 1;
   // }
@@ -47,15 +47,13 @@ const NewClass = ({ history }) => {
       maxNumber: formState.maxNumber,
       teacher: formState.teacher,
     };
-    console.log("newClass=>", newClass);
+
     addNewClass(newClass)
       .then((newClassData) => {
-        console.log("newClassData=>", newClassData);
         dispatch({
           type: "setClasses",
           data: [...classes, newClassData],
         });
-        console.log("before routing");
         history.push("/classes");
       })
       .catch((error) => console.log(error));

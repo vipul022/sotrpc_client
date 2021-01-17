@@ -29,7 +29,6 @@ const Gallery = ({ history }) => {
   const content =
     photos &&
     photos.map((photo, index) => {
-      // console.log("photo inside content=>", photo);
       return (
         <div key={photo._id}>
           <Container className="thumb-container">

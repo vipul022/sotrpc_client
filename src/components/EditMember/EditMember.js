@@ -56,7 +56,6 @@ const EditMember = (props) => {
 
     deleteMember(id)
       .then((response) => {
-        console.log(response);
         dispatch({
           type: "setMembers",
           data: updateMembers,

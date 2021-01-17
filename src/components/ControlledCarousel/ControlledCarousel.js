@@ -7,7 +7,6 @@ function ControlledCarousel({ index, photos }) {
   const [photoIndex, setPhotoIndex] = useState(index);
 
   const handleSelect = (index, e) => {
-    console.log("e.direction=>", e.direction);
     setPhotoIndex(index);
   };
 

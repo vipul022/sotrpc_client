@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import BackButton from "../Button/BackButton";
 import { useGlobalState } from "../../config/globalState";
 import { Link } from "react-router-dom";
 import { getAllMembers } from "../../services/membersServices";

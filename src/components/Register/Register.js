@@ -34,7 +34,6 @@ const Register = ({ history }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     //!RegisterUser is a function that hit the backend api and save data to the db
-    console.log("userDetails.email inside handleSubmit=>", userDetails.email);
     registerUser(userDetails)
       .then((data) => {
         const LoggedInUser = data.user;
