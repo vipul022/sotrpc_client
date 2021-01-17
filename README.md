@@ -1,4 +1,4 @@
-# T3A2-B - Full Stack App (Part B)
+# Can't see new or delete buttonsT3A2-B - Full Stack App (Part B)
 
 A Joint Venture by Jason Stacy and Vipul Seth for Coder Academy Melbourne.
 
@@ -23,6 +23,8 @@ All history of our work can therefore be seen up until the 11 Jan 2021 in the fi
 
 For clarity, this README will exist in all three repositories.
 
+
+
 ### Task Delegation Methodology
 
 Vipul and Jason used an Agile Scrum planning methodology. After meeting with the client, they had a list of features and functionality that were required. As the client wanted guarantees that we were not able to provide given Jason and Vipul's expertise, time frame and unknowns of future work commitments, they decided that they would probably not end up using the product we provided. Vipul and Jason felt however, that it would be worthwhile treating the project as though it was still required. 
@@ -35,7 +37,54 @@ Vipul and Jason had regular sprint meetings once a week where they would detail 
 
 ### Testing
 
-Screenshot of manual server testing via postman:
+Automated:
+
+Unit testing was through Mocha on the server.
+
+
+
+Manual testing was performed throughout both in development and production sites using the user stories.
+
+| User Stories                                                 | Development                        | Production                         | Notes                                                        |
+| ------------------------------------------------------------ | ---------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
+| **Mark's stories**                                           |                                    |                                    |                                                              |
+| Have complete rights to edit and remove the members so that I can manage and test the database. | Remove and Edit ok                 | Remove and Edit ok                 |                                                              |
+| Update members paid status when they make a payment to the bank account. | ok                                 | ok                                 |                                                              |
+| Add, edit and remove the classes so that I can assist users to planing their schedule accordingly. | add, edit, remove ok               | add, edit, remove ok               |                                                              |
+| Upload or delete minutes allowing members to download them.  | N/A                                | N/A                                | Not implemented at this stage                                |
+| Upload and or delete new newsletters so members can download them. | N/A                                | N/A                                | Not implemented at this stage                                |
+| View the history of the club.                                | ok                                 | ok                                 |                                                              |
+| View the photos in the gallery to see examples of other members work. | ok                                 | ok                                 |                                                              |
+| Add/remove photos to the gallery to allow other users to view them. | add, remove ok                     | add, remove ok                     | *In addition, photos are not permitted if not jpg, jpeg, png or over 2mb |
+| Make other members admins so they can also assist me with maintaining the website. | ok                                 | ok                                 |                                                              |
+| **Julie (Member)**                                           |                                    |                                    |                                                              |
+| She wants:                                                   |                                    |                                    |                                                              |
+| A good user interface, so that I can navigate to different parts of the website easily | ok                                 | ok                                 |                                                              |
+| Credentials to be persistent in the database so that I can log in and logout of my account securely. | login / logout ok                  | login / logout ok                  |                                                              |
+| A profile, so that I can edit my personal details.           | ok                                 | ok                                 |                                                              |
+| To view the history of the club.                             | ok                                 | ok                                 |                                                              |
+| To view the photos in the gallery to see examples of other members work. | ok                                 | ok                                 |                                                              |
+| I want the ability to download minutes of the club meetings to see what was discussed. | N/A                                | N/A                                | Not implemented at this stage                                |
+| I want the ability to download past newsletters in case I miss anything. | N/A                                | N/A                                | Not implemented at this stage                                |
+| She should not:                                              |                                    |                                    |                                                              |
+| Be able to add or remove photos to the gallery.              | Can't see new or delete buttons ok | Can't see new or delete buttons ok |                                                              |
+| Be able to view members details.                             | Can't see members link ok          | Can't see members link ok          |                                                              |
+| **Sandra's stories**                                         |                                    |                                    |                                                              |
+| She wants to:                                                |                                    |                                    |                                                              |
+| A good user interface, so that I can navigate to different parts of the website easily on my tablet. | ok                                 | ok                                 |                                                              |
+| View the history of the club so I can get an idea how long it has been going and how likely it will continue if I were to become a member. | ok                                 | ok                                 |                                                              |
+| See what classes are available if I did become a member.     | ok                                 | ok                                 |                                                              |
+| View the photos in the gallery to see examples of what members create. | ok                                 | ok                                 |                                                              |
+| Sign up to become a member if I should choose to do so.      | ok                                 | ok                                 |                                                              |
+| She should not:                                              |                                    |                                    |                                                              |
+| Be able to add or remove photos to the gallery.              | Can't see new or delete buttons ok | Can't see new or delete buttons ok |                                                              |
+| View members details.                                        | Can't see members link ok          | Can't see members link ok          |                                                              |
+| View any minutes from club meetings until a member.          | N/A                                | N/A                                | Not implemented at this stage                                |
+| View any past newsletters until a member.                    | N/A                                | N/A                                | Not implemented at this stage                                |
+
+
+
+Screenshot of manual server development testing via postman:
 
 ![](docs/postman_testing.png)
 
@@ -64,7 +113,15 @@ Screenshot of manual server testing via postman:
 
 ![Tello-11](./docs/trello-board/Trello-11.png)
 
-from part A:
+
+
+
+
+
+
+
+
+Documentation from part A:
 
 # T3A2-A - Full Stack App (Part A)
 
