@@ -7,6 +7,7 @@ import ButtonComponent from "../Button/Button";
 import Container from "react-bootstrap/Container";
 
 import Header from "../Header/Header";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const Classes = ({ history }) => {
   // !useGlobalState is used to access store and dispatch globally which are defined in app.js
@@ -23,11 +24,20 @@ const Classes = ({ history }) => {
           data: classData,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        dispatch({
+          type: "setErrorMessage",
+          data: `${error}`,
+        });
+      });
   };
   // ! When component initially renders, fetch classes from backend
   useEffect(() => {
     fetchClasses();
+    dispatch({
+      type: "setErrorMessage",
+      data: null,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,7 +54,12 @@ const Classes = ({ history }) => {
           data: updatedClasses,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        dispatch({
+          type: "setErrorMessage",
+          data: `${error}`,
+        });
+      });
   };
   const handleEdit = (event) => {
     event.preventDefault();
@@ -103,7 +118,7 @@ const Classes = ({ history }) => {
         >
           Classes
         </Header>
-
+        <ErrorMessage/>
         <Container className="classes-container">{content}</Container>
       </Container>
     </div>

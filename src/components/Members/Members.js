@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllMembers } from "../../services/membersServices";
 
 import Header from "../Header/Header";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Table, Container } from "react-bootstrap";
 
 const Members = (props) => {
@@ -20,11 +21,20 @@ const Members = (props) => {
           data: membersData,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        dispatch({
+          type: "setErrorMessage",
+          data: `${error}`,
+        });
+      });
   };
 
   useEffect(() => {
     fetchMembers();
+    dispatch({
+      type: "setErrorMessage",
+      data: null,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -50,7 +60,7 @@ const Members = (props) => {
   return (
     <Container className="main-container">
       <Header history={history}>Members</Header>
-
+      <ErrorMessage/>
       <Container className="members-container">
         <Table striped bordered hover>
           <thead>

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalState } from "../../config/globalState";
 import { addNewClass } from "../../services/classesServices";
 
 import Header from "../Header/Header";
-
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Form, Container, Button } from "react-bootstrap";
 const NewClass = ({ history }) => {
   // !accessing current state of classes from store
@@ -20,6 +20,14 @@ const NewClass = ({ history }) => {
   };
 
   const [formState, setFormState] = useState(initialFormState);
+
+  useEffect(() => {
+    dispatch({
+      type: "setErrorMessage",
+      data: null,
+    });
+    // eslint-disable-next-line
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,14 +64,19 @@ const NewClass = ({ history }) => {
         });
         history.push("/classes");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        dispatch({
+          type: "setErrorMessage",
+          data: `${error}`,
+        });
+      });
   };
 
   return (
     <div>
       <Container className="small-container">
         <Header history={history}>Add New Class</Header>
-
+        <ErrorMessage/>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicTitle">
             <Form.Label>Title</Form.Label>

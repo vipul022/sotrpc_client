@@ -5,6 +5,7 @@ import { getAllPhotos } from "../../services/photoServices";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Header from "../Header/Header";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const Gallery = ({ history }) => {
   const { store, dispatch } = useGlobalState();
@@ -19,11 +20,20 @@ const Gallery = ({ history }) => {
           data: photoData,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        dispatch({
+          type: "setErrorMessage",
+          data: `${error}`,
+        });
+      });
   };
 
   useEffect(() => {
     fetchPhotos();
+    dispatch({
+      type: "setErrorMessage",
+      data: null,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const content =
@@ -61,7 +71,7 @@ const Gallery = ({ history }) => {
         >
           Gallery
         </Header>
-
+        <ErrorMessage/>
         <Container className="gallery-container">{content}</Container>
       </Container>
     </div>

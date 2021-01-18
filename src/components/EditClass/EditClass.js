@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalState } from "../../config/globalState";
 import { updateClass, getClassFromId } from "../../services/classesServices";
-
 import Header from "../Header/Header";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Form, Container, Button } from "react-bootstrap";
 const EditClass = (props) => {
   const { store, dispatch } = useGlobalState();
@@ -34,6 +34,10 @@ const EditClass = (props) => {
       maxNumber: cl.maxNumber,
       teacher: cl.teacher,
     });
+    dispatch({
+      type: "setErrorMessage",
+      data: null,
+    });
     // eslint-disable-next-line
   }, []);
   function handleChange(event) {
@@ -64,14 +68,20 @@ const EditClass = (props) => {
           type: "setClasses",
           data: [...otherClasses, updatedClass],
         });
+        history.push("/classes");
       })
-      .catch((error) => console.log(error));
-    history.push("/classes");
+      .catch((error) => {
+        dispatch({
+          type: "setErrorMessage",
+          data: `${error}`,
+        });
+      });
   };
 
   return (
     <Container className="small-container">
       <Header history={history}>Edit Class</Header>
+      <ErrorMessage/>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicTitle">
           <Form.Label>Title</Form.Label>

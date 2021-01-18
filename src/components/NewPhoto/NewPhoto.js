@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../Header/Header";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { Form, Container, Button, Alert } from "react-bootstrap";
 import { uploadFile } from "../../services/fileServices";
 import { validatePhoto } from "../../validations/photoValidations";
@@ -9,7 +10,7 @@ import { useGlobalState } from "../../config/globalState";
 const NewPhoto = ({ history }) => {
   const { store, dispatch } = useGlobalState();
   // !extracting fileState and errorMessage
-  const { fileState, errorMessage } = store;
+  const { fileState } = store;
 
   const { selectedFile, success } = fileState;
   //  ! When component initially renders set the type to photos. Set the success and error message to null
@@ -76,11 +77,7 @@ const NewPhoto = ({ history }) => {
   return (
     <Container className="small-container">
       <Header history={history}>Upload Photo</Header>
-      {errorMessage && (
-        <Alert variant="danger">
-          <p>{errorMessage}</p>
-        </Alert>
-      )}
+      <ErrorMessage/>
       {success && (
         <Alert variant="success">
           <p>Upload Successful!</p>
