@@ -8,16 +8,16 @@ import Navbar from "react-bootstrap/Navbar";
 import Logo from "../../data/images/logo-circle-sm.png";
 
 const Navi = () => {
+  // ! accessing store and dispatch from global state
   const { store, dispatch } = useGlobalState();
   const { LoggedInUser } = store;
-  console.log("LoggedInUser=>", LoggedInUser);
+  // ! accessing name, role, id from LoggedInUser
   const { name, role, _id } = LoggedInUser;
 
   const logoutUser = () => {
     // !logout user from backend
     logoutUserFromBackend()
       .then((data) => {
-        console.log("data=>", data);
         dispatch({
           type: "setLoggedInUser",
           data: {},
@@ -25,7 +25,7 @@ const Navi = () => {
       })
       .catch((error) => console.log(error));
   };
-
+  //! function to conditionally the links
   const showLogOutOrSignUp = (name) => {
     if (name) {
       return (
@@ -62,44 +62,44 @@ const Navi = () => {
   };
 
   return (
-      <div id="navbar-wrapper">
-        <Nav id="navbar-top-half">
-          <Nav.Link as={Link} to="/" id="logo-container">
-            <img id="logo" src={Logo} alt="logo" />
-          </Nav.Link>
-          <h1 className="disappear-class" id="title">
-            South of the River Potters Club
-          </h1>
-          <div id="signup-login">{showLogOutOrSignUp(name)}</div>
-        </Nav>
+    <div id="navbar-wrapper">
+      <Nav id="navbar-top-half">
+        <Nav.Link as={Link} to="/" id="logo-container">
+          <img id="logo" src={Logo} alt="logo" />
+        </Nav.Link>
+        <h1 className="disappear-class" id="title">
+          South of the River Potters Club
+        </h1>
+        <div id="signup-login">{showLogOutOrSignUp(name)}</div>
+      </Nav>
 
-        <Navbar className="navbar-bottom-half" expand="lg">
-          {/* {empty navbar brand so hamburger appears on the right} */}
+      <Navbar className="navbar-bottom-half" expand="lg">
+        {/* {empty navbar brand so hamburger appears on the right} */}
         <Navbar.Brand />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto" id="navbar-custom-links">
-              <Nav.Link as={Link} to="/">
-                Home
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto" id="navbar-custom-links">
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/classes">
+              Classes
+            </Nav.Link>
+            <Nav.Link as={Link} to="/photos">
+              Gallery
+            </Nav.Link>
+            <Nav.Link as={Link} to="/history">
+              History
+            </Nav.Link>
+            {role === "Admin" ? (
+              <Nav.Link as={Link} to="/users">
+                Members
               </Nav.Link>
-              <Nav.Link as={Link} to="/classes">
-                Classes
-              </Nav.Link>
-              <Nav.Link as={Link} to="/photos">
-                Gallery
-              </Nav.Link>
-              <Nav.Link as={Link} to="/history">
-                History
-              </Nav.Link>
-              {role === "Admin" ? (
-                <Nav.Link as={Link} to="/users">
-                  Members
-                </Nav.Link>
-              ) : null}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-     </div>
+            ) : null}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
   );
 };
 

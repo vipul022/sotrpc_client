@@ -2,20 +2,17 @@ import React, { useState } from "react";
 
 import { Carousel, Image } from "react-bootstrap";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-
+// !reference taken from react-bootstrap carousel docs
 function ControlledCarousel({ index, photos }) {
-  console.log("index is ", index);
   const [photoIndex, setPhotoIndex] = useState(index);
 
   const handleSelect = (index, e) => {
-    console.log("e.direction=>", e.direction);
     setPhotoIndex(index);
   };
 
   const content =
     photos &&
     photos.map((photo) => {
-      // console.log("photo inside content=>", photo);
       return (
         <Carousel.Item key={photo._id} className="carousel-photo-container">
           <Image className="photo" src={photo.url} alt={photo.description} />

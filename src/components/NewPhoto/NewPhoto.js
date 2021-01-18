@@ -1,22 +1,18 @@
-import React, {useEffect} from "react";
-// import { uploadPhotoToS3 } from "../../services/photoServices";
+import React, { useEffect } from "react";
 import Header from "../Header/Header";
-// import { addNewPhoto } from "../../services/photoServices";
 import { Form, Container, Button, Alert } from "react-bootstrap";
 import { uploadFile } from "../../services/fileServices";
 import { validatePhoto } from "../../validations/photoValidations";
 import { useGlobalState } from "../../config/globalState";
 
-// ! reference taken from https://medium.com/@khelif96/uploading-files-from-a-react-app-to-aws-s3-the-right-way-541dd6be689
+// ! reference taken from https://medium.com/@khelif96/uploading-files-from-a-react-app-to-aws-s3-the-right-way-541dd6be689 but class component has been changed to functional component
 const NewPhoto = ({ history }) => {
   const { store, dispatch } = useGlobalState();
   // !extracting fileState and errorMessage
   const { fileState, errorMessage } = store;
-  console.log("fileState=>", fileState);
-  const { selectedFile, success } = fileState;
-  console.log("success=>", success);
-  console.log("errorMessage=>", errorMessage);
 
+  const { selectedFile, success } = fileState;
+  //  ! When component initially renders set the type to photos. Set the success and error message to null
   useEffect(() => {
     const updatedData = {
       ...fileState,
@@ -26,15 +22,14 @@ const NewPhoto = ({ history }) => {
     };
     dispatch({
       type: "setFileState",
-      data: updatedData
+      data: updatedData,
     });
     dispatch({
       type: "setErrorMessage",
-      data: null
+      data: null,
     });
+    // eslint-disable-next-line 
   }, []);
-
-
 
   const handleDescriptionChange = (event) => {
     const { name, value } = event.target;
@@ -42,7 +37,7 @@ const NewPhoto = ({ history }) => {
       ...fileState,
       [name]: value,
     };
-    // !whenever user enters a description of another photo set success message and error message should disappear
+
     dispatch({
       type: "setFileState",
       data: updatedData,
@@ -53,6 +48,7 @@ const NewPhoto = ({ history }) => {
     });
   };
 
+  // ! extracted uploaded file from event.target.files[0] and set to state of selected file
   const handleFileChange = (event) => {
     const updatedData = {
       ...fileState,
@@ -68,12 +64,11 @@ const NewPhoto = ({ history }) => {
       type: "setErrorMessage",
       data: null,
     });
-    console.log("inside handleFileChange");
   };
 
   const handleUpload = (event) => {
     event.preventDefault();
-    console.log("selectedFile=>", selectedFile);
+
     //  ! passed dispatch as argument to change the global state
     if (validatePhoto(selectedFile, dispatch)) uploadFile(fileState, dispatch);
   };

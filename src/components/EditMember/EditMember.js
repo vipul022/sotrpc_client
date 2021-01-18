@@ -9,14 +9,12 @@ const EditMember = (props) => {
   const { store, dispatch } = useGlobalState();
   const { members, LoggedInUser } = store;
   const { role } = LoggedInUser;
-  // console.log("PROPS=>", props);
-  const { history } = props;
+
   // !extracting history from props
+  const { history } = props;
 
   // !accessing member that is being passed from Members component
   const { member } = props.location.state;
-  console.log("member=>", member);
-  console.log("members=>", members);
 
   // !set initial form values to empty string
   const initialFormState = {
@@ -29,7 +27,7 @@ const EditMember = (props) => {
   };
 
   const [formState, setFormState] = useState(initialFormState);
-  // console.log("formState=>", formState);
+
   useEffect(() => {
     // ! This will update the form with the values of the specific member immediately after a component is mounted. This is invoked only for the initial render.
 
@@ -41,13 +39,11 @@ const EditMember = (props) => {
       paid: member.paid,
       role: member.role,
     });
+    // eslint-disable-next-line
   }, []);
 
   function handleChange(event) {
-    const name = event.target.name;
-    console.log("name=>", name);
-    const value = event.target.value;
-    console.log("value=>", value);
+    const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
@@ -58,27 +54,24 @@ const EditMember = (props) => {
     event.preventDefault();
     const id = member._id;
     const updateMembers = members.filter((member) => member._id !== id);
-    // console.log("id=>", id);
+
     deleteMember(id)
       .then((response) => {
-        console.log(response);
         dispatch({
           type: "setMembers",
           data: updateMembers,
         });
       })
       .catch((error) => console.log(error));
-    // role === "Admin" ? history.push("/users") : history.push("/");
+
     if (role === "Admin") {
       history.push("/users");
     } else {
       // !logout user from backend
       logoutUserFromBackend()
         .then((data) => {
-          console.log("data=>", data);
           dispatch({
             type: "setLoggedInUser",
-
             data: {},
           });
         })
@@ -98,15 +91,13 @@ const EditMember = (props) => {
       paid: formState.paid,
       role: formState.role,
     };
-    console.log("updatedMember=>", updatedMember);
+
     const otherMembers = members.filter(
       (member) => member._id !== updatedMember._id
     );
-    console.log("otherMembers=>", otherMembers);
+
     updateMember(updatedMember)
       .then((response) => {
-        console.log("response=>", response);
-
         dispatch({
           type: "setMembers",
           data: [...otherMembers, updatedMember],

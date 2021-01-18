@@ -6,17 +6,15 @@ import { Container, Alert } from "react-bootstrap";
 import Header from "../Header/Header";
 
 const Photo = (props) => {
-  // console.log("props.location.state: ",props.location.state)
   const { store, dispatch } = useGlobalState();
   const { photos, fileState, errorMessage } = store;
 
   const { type } = fileState;
-  console.log("type inside Photo.js=>", type);
-  // !accessing photo that is being passed from Gallery component
-  console.log("props=>", props);
+
+  // !accessing photo and index from props those are being passed from Gallery component
+
   const { history } = props;
   const { photo, index } = props.location.state;
-  // console.log("photo=>", photo);
 
   useEffect(() => {
     const updatedData = {
@@ -31,23 +29,21 @@ const Photo = (props) => {
       type: "setErrorMessage",
       data: null,
     });
+    // eslint-disable-next-line
   }, []);
 
   const handleDelete = (event) => {
     event.preventDefault();
     const updatedPhotos = photos.filter((p) => p._id !== photo._id);
-    console.log("updatedPhotos=>", updatedPhotos);
-    console.log("inside handle delete in Photo.js, type is =>", type);
+    // ! passed type to deleteFile which calls backend api and as it is a pure function which can also be used to delete newsletters and minutes at a later stage
     deleteFile(photo._id, type)
       .then((response) => {
-        console.log("response=>", response);
         dispatch({
           type: "setPhotos",
           data: updatedPhotos,
         });
       })
       .catch((error) => {
-        console.log(error);
         dispatch({
           type: "setErrorMessage",
           data: `There was a problem saving the photo to S3, code ${error.response.status}, ${error.response.statusText}`,

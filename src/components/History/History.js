@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 const History = ({ history }) => {
   return (
     <Container className="main-container">
+      {/* passing  history as prop to Header */}
       <Header history={history}>History</Header>
 
       <Container className="history-container">

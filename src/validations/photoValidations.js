@@ -1,7 +1,6 @@
-
 const validatePhoto = (selectedFile, dispatch) => {
   const { size } = selectedFile;
-  console.log("size=>", size);
+
   // //! Split the filename to get the type
   let fileParts = selectedFile.name.split(".");
 
@@ -9,7 +8,6 @@ const validatePhoto = (selectedFile, dispatch) => {
   const typeLowerCase = fileType.toLowerCase();
   const TWOMEGABYTES = 2097152;
 
-  console.log("fileType=>", fileType);
   if (size >= TWOMEGABYTES) {
     dispatch({
       type: "setErrorMessage",
@@ -31,8 +29,8 @@ const validatePhoto = (selectedFile, dispatch) => {
       type: "setErrorMessage",
       data: null,
     });
-    console.log("inside validatePhoto=>");
+
     return true;
   }
 };
-export { validatePhoto }
+export { validatePhoto };

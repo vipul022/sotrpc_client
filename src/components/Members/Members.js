@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import BackButton from "../Button/BackButton";
 import { useGlobalState } from "../../config/globalState";
 import { Link } from "react-router-dom";
 import { getAllMembers } from "../../services/membersServices";
@@ -12,8 +11,7 @@ const Members = (props) => {
   const { store, dispatch } = useGlobalState();
   const { members } = store;
   const { history } = props;
-  console.log("members=>", members);
-
+  // ! fetch all the members from backend (db) and set the state
   const fetchMembers = () => {
     getAllMembers()
       .then((membersData) => {
@@ -26,11 +24,9 @@ const Members = (props) => {
   };
 
   useEffect(() => {
-    console.log("inside Members useEffect");
     fetchMembers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("members=>", members);
 
   //  !passing an object with pathname and state as properties with Link to, to access member inside Editmember component
   const content = members.map((member) => (

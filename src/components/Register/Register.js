@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 import { Form, Container, Button, Alert } from "react-bootstrap";
 
 const Register = ({ history }) => {
+  // ! set the initial form states to empty strings
   const initialFormState = {
     name: "",
     address: "",
@@ -14,16 +15,16 @@ const Register = ({ history }) => {
     email: "",
     password: "",
   };
-
+  // ! setting userDetails nad errorMessage with useState hook
   const [userDetails, setUserDetails] = useState(initialFormState);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const { store, dispatch } = useGlobalState();
-  const { LoggedInUser } = store;
-  console.log("user inside register=>", LoggedInUser);
+  const { dispatch } = useGlobalState();
+
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    // ! extracting name and value from even.target with destructing
+    const { name, value } = event.target;
+
     setUserDetails({
       ...userDetails,
       [name]: value,
@@ -31,26 +32,19 @@ const Register = ({ history }) => {
   };
 
   const handleSubmit = (event) => {
-    console.log("hello");
     event.preventDefault();
-    //!RegisterUser is a function that hit the backend route and save data to the db
-    console.log("userDetails.email inside handleSubmit=>", userDetails.email);
+    //!RegisterUser is a function that hit the backend api and save data to the db
     registerUser(userDetails)
       .then((data) => {
-        console.log("data in register=>", data);
-
         const LoggedInUser = data.user;
-        console.log("LoggedInUser inside handle submit=>", LoggedInUser);
 
         dispatch({
           type: "setLoggedInUser",
-
           data: LoggedInUser,
         });
         history.push("/");
       })
       .catch((error) => {
-        console.log("error=>", error);
         if (error.response && error.response.status === 409)
           setErrorMessage(
             "Authentication failed, please check user name and password"
