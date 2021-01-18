@@ -4,8 +4,11 @@ A Joint Venture by Jason Stacy and Vipul Seth for Coder Academy Melbourne.
 
 ### Site address:
 
-
 https://southoftheriverpottersclub.herokuapp.com
+
+**Back-End Server Address:**
+
+https://sotrpc-server.herokuapp.com
 
 ### GitHub Repositories:
 
