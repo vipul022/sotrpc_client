@@ -15,9 +15,24 @@ import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "../Home/Home";
 
+const store = {
+  classes: [],
+  members: [],
+  photos: [],
+  LoggedInUser: {},
+  errorMessage: null,
+  fileState: {
+    success: false,
+    url: "",
+    description: "",
+    file: {},
+    selectedFile: "",
+    type: "",
+  },
+};
 const renderComponent = () => {
   render(
-    <StateContext.Provider value="">
+    <StateContext.Provider value={{ store }}>
       <BrowserRouter>
         <Register />
 
@@ -27,48 +42,33 @@ const renderComponent = () => {
     </StateContext.Provider>
   );
 };
-// ! // import API mocking utilities from Mock Service Worker.
-// import { rest } from "msw";
-// import { setupServer } from "msw/node";
-
-// const store = { loggedInUser: "vipul" };
-// const fakeData = { name: "vipul" };
-
-// //  !declare which API requests to mock
-// const server = setupServer(
-//   // !capture "POST /users request"
-// rest.post("/users", (req, res, ctx) => {
-//     // ! getting back response using mocked json body
-// return res(ctx.json(fakeData));
-// })
-// );
 
 describe("Register component renders as expected", () => {
-  // !beforeEach render the app before every test
+  // !beforeEach render the Register before every test
   beforeEach(() => {
     render(
-      <StateContext.Provider value={""}>
+      <StateContext.Provider value={{ store }}>
         <Register />
       </StateContext.Provider>
     );
   });
   test("Should render 'Create Account' heading ", () => {
-    screen.getByRole("heading", { name: /create account/i }).toBeInTheDocument;
+    screen.getByText(/create account/i).toBeInTheDocument;
   });
-  test("should render 'Name' label", () => {
-    screen.getByText(/name/i).toBeInTheDocument;
+  test("should render ' Full Name' label", () => {
+    screen.getByText(/full name/i).toBeInTheDocument;
   });
   test("should select input element by placeholder text", () => {
     screen.getByPlaceholderText("Enter your full name...").toBeInTheDocument;
   });
   test("should render 'Address' label", () => {
-    screen.getByText(/address/i).toBeInTheDocument;
+    screen.getByTestId("address").toBeInTheDocument;
   });
   test("should select input element by placeholder text", () => {
     screen.getByPlaceholderText("Enter your address...").toBeInTheDocument;
   });
   test("should render 'Email' label", () => {
-    screen.getByText(/email/i).toBeInTheDocument;
+    screen.getByText(/email address/i).toBeInTheDocument;
   });
   test("should select input element by placeholder text", () => {
     screen.getByPlaceholderText("Enter your email...").toBeInTheDocument;
@@ -77,7 +77,7 @@ describe("Register component renders as expected", () => {
     screen.getByText(/password/i).toBeInTheDocument;
   });
   test("should select input element by placeholder text", () => {
-    screen.getByPlaceholderText("Enter password...").toBeInTheDocument;
+    screen.getByPlaceholderText("Enter your password...").toBeInTheDocument;
   });
   // ! all methods starting with query does not throw error but it is very useful for checking negative outcome using expect with it as it returns null in such cases
   test('should not find the role "whatever" in our component', () => {
@@ -85,14 +85,12 @@ describe("Register component renders as expected", () => {
   });
   test("should select input elements by their role", () => {
     expect(screen.getAllByRole("textbox").length).toEqual(4);
-    // expect(screen.getAllByRole("textbox")).toBeRequired();
   });
   test("all text boxes should have required attribute", () => {
     expect(screen.getAllByRole("textbox")).toBeRequired;
   });
   test("should render input box for email", () => {
     screen.getByTestId("email").toBeInTheDocument;
-    // expect(screen.getByTestId("email")).toBeRequired();
   });
   test("email field should be required", () => {
     expect(screen.getByTestId("email")).toBeRequired;
@@ -101,7 +99,7 @@ describe("Register component renders as expected", () => {
     screen.getByRole("button", { name: /back/i });
   });
   test("should select 'create account' button by it's role", () => {
-    screen.getByRole("button", { name: /create account/i });
+    screen.getByRole("button", { name: /submit/i });
   });
 });
 //  ! reference taken from: https://www.npmjs.com/package/@testing-library/react
