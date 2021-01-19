@@ -24,14 +24,6 @@ const SignIn = ({ history }) => {
     });
   };
 
-  useEffect(() => {
-    dispatch({
-      type: "setErrorMessage",
-      data: null,
-    });
-    // eslint-disable-next-line
-  }, []);
-
   //!loginUser is a function that hit the backend api and save data to the db
   const handleSubmit = (event) => {
     event.preventDefault();

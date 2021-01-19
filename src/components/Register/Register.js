@@ -15,14 +15,6 @@ const Register = ({ history }) => {
     password: "",
   };
 
-  useEffect(() => {
-    dispatch({
-      type: "setErrorMessage",
-      data: null,
-    });
-    // eslint-disable-next-line
-  }, []);
-
   // ! setting userDetails with useState hook
   const [userDetails, setUserDetails] = useState(initialFormState);
   const { dispatch } = useGlobalState();
