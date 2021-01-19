@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalState } from "../../config/globalState";
 import { loginUser } from "../../services/authServices";
-
 import Header from "../Header/Header";
-import { Form, Container, Button, Alert } from "react-bootstrap";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { Form, Container, Button} from "react-bootstrap";
 
 const SignIn = ({ history }) => {
   // !extracting dispatch from global state
@@ -15,8 +15,6 @@ const SignIn = ({ history }) => {
   };
 
   const [userDetails, setUserDetails] = useState(initialFormState);
-  const [errorMessage, setErrorMessage] = useState(null);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -25,6 +23,14 @@ const SignIn = ({ history }) => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    dispatch({
+      type: "setErrorMessage",
+      data: null,
+    });
+    // eslint-disable-next-line
+  }, []);
 
   //!loginUser is a function that hit the backend api and save data to the db
   const handleSubmit = (event) => {
@@ -42,14 +48,16 @@ const SignIn = ({ history }) => {
         history.push("/");
       })
       .catch((error) => {
-        if (error.response && error.response.status === 401)
-          setErrorMessage(
-            "Authentication failed, please check user name and password"
-          );
+        if (error.response && error.response.status === 409)
+          dispatch({
+            type: "setErrorMessage",
+            data: "Authentication failed, please check user name and password",
+          });
         else
-          setErrorMessage(
-            "There may be a problem with the server please try later"
-          );
+          dispatch({
+          type: "setErrorMessage",
+          data: "There may be a problem with the server please try later",
+        });
       });
   };
 
@@ -57,12 +65,8 @@ const SignIn = ({ history }) => {
     <div>
       <Container className="small-container">
         <Header history={history}>Login</Header>
+        <ErrorMessage/>
         <Form onSubmit={handleSubmit}>
-          {errorMessage && (
-            <Alert variant="danger">
-              <p>{errorMessage}</p>
-            </Alert>
-          )}
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control

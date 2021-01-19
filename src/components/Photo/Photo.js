@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { deleteFile } from "../../services/fileServices";
 import { useGlobalState } from "../../config/globalState";
 import ControlledCarousel from "../ControlledCarousel/ControlledCarousel";
-import { Container, Alert } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Header from "../Header/Header";
-
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 const Photo = (props) => {
   const { store, dispatch } = useGlobalState();
-  const { photos, fileState, errorMessage } = store;
+  const { photos, fileState } = store;
 
   const { type } = fileState;
 
@@ -59,12 +59,8 @@ const Photo = (props) => {
           Gallery
         </Header>
       </Container>
+      <ErrorMessage/>
       <Container className="carousel-container">
-        {errorMessage && (
-          <Alert variant="danger">
-            <p>{errorMessage}</p>
-          </Alert>
-        )}
         <ControlledCarousel index={index} photos={photos} />
       </Container>
     </div>
