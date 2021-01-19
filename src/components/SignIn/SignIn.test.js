@@ -30,7 +30,7 @@ describe("SignIn component render as expected", () => {
       </StateContext.Provider>
     );
   });
-  test("should render 'Login' heading", () => {
+  test.only("should render 'Login' heading", () => {
     screen.getByText(/login/i).toBeInTheDocument;
   });
   test("should render 'Email' label", () => {
