@@ -35,10 +35,10 @@ const App = () => {
       type: "",
     },
   };
-// !useReducer takes reducer function and initial state and returns current state (store) and dispatch function 
+  // !useReducer takes reducer function and initial state and returns current state (store) and dispatch function
   const [store, dispatch] = useReducer(stateReducer, initialState);
 
-  // ! store and dispatch are passed through StateContext.Provider 
+  // ! store and dispatch are passed through StateContext.Provider
   //! so that they can be accessible inside all the components through global state
   return (
     <div>
