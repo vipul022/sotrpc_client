@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import Register from "./Register";
 import { StateContext } from "../../config/globalState";
-// import { server, rest } from "../../test/server";
+import { server, rest } from "../../test/server";
 
 import "@testing-library/jest-dom/extend-expect";
 
@@ -135,6 +135,11 @@ describe("Register component creates a user as expected", () => {
   });
 
   // test.only("should display server error if request fails", async () => {
+  //   render(
+  //     <StateContext.Provider value={{ store }}>
+  //       <Register />
+  //     </StateContext.Provider>
+  //   );
   //   const testErrorMessage =
   //     "Authentication failed, please check user name and password";
   //   console.log("inside server.use=>");
@@ -147,11 +152,6 @@ describe("Register component creates a user as expected", () => {
   //     })
   //   );
 
-  //   render(
-  //     <StateContext.Provider value={{ store }}>
-  //       <Register />
-  //     </StateContext.Provider>
-  //   );
   //   // ! fill the form
   //   fireEvent.change(screen.getByTestId("name"), {
   //     target: { value: "vipul" },

@@ -62,7 +62,7 @@ const Register = ({ history }) => {
       <Form onSubmit={handleSubmit}>
         {errorMessage && (
           <Alert variant="danger">
-            <p data-testid="errorMessage">{errorMessage}</p>{" "}
+            <p data-testid="errorMessage">{errorMessage}</p>
           </Alert>
         )}
         <Form.Group controlId="formBasicName">
