@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalState } from "../../config/globalState";
 import { registerUser } from "../../services/authServices";
-
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Header from "../Header/Header";
 
 import { Form, Container, Button, Alert } from "react-bootstrap";
@@ -17,7 +17,6 @@ const Register = ({ history }) => {
   };
   // ! setting userDetails nad errorMessage with useState hook
   const [userDetails, setUserDetails] = useState(initialFormState);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const { dispatch } = useGlobalState();
 
@@ -46,25 +45,30 @@ const Register = ({ history }) => {
       })
       .catch((error) => {
         if (error.response && error.response.status === 409)
-          setErrorMessage(
-            "Authentication failed, please check user name and password"
-          );
+          // setErrorMessage(
+          //   "Authentication failed, please check user name and password"
+          // );
+          dispatch({
+            type: "setErrorMessage",
+            data: "Authentication failed, please check user name and password",
+          });
         else
-          setErrorMessage(
-            "There may be a problem with the server please try later"
-          );
+          dispatch({
+            type: "setErrorMessage",
+            data: "There may be a problem with the server please try later",
+          });
       });
   };
   return (
     <Container className="small-container">
       <Header history={history}>Create Account</Header>
-
+      <ErrorMessage />
       <Form onSubmit={handleSubmit}>
-        {errorMessage && (
+        {/* {errorMessage && (
           <Alert variant="danger">
             <p data-testid="errorMessage">{errorMessage}</p>{" "}
           </Alert>
-        )}
+        )} */}
         <Form.Group controlId="formBasicName">
           <Form.Label>Full Name</Form.Label>
           <Form.Control
