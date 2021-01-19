@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import Register from "./Register";
 import { StateContext } from "../../config/globalState";
-import { server, rest } from "../../test/server";
+// import { server, rest } from "../../test/server";
 
 import "@testing-library/jest-dom/extend-expect";
 
