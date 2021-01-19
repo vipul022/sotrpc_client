@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useGlobalState } from "../../config/globalState";
 import { registerUser } from "../../services/authServices";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Header from "../Header/Header";
-
-import { Form, Container, Button, Alert } from "react-bootstrap";
+import { Form, Container, Button } from "react-bootstrap";
 
 const Register = ({ history }) => {
   // ! set the initial form states to empty strings
@@ -15,9 +14,9 @@ const Register = ({ history }) => {
     email: "",
     password: "",
   };
-  // ! setting userDetails nad errorMessage with useState hook
-  const [userDetails, setUserDetails] = useState(initialFormState);
 
+  // ! setting userDetails with useState hook
+  const [userDetails, setUserDetails] = useState(initialFormState);
   const { dispatch } = useGlobalState();
 
   const handleChange = (event) => {
@@ -45,9 +44,6 @@ const Register = ({ history }) => {
       })
       .catch((error) => {
         if (error.response && error.response.status === 409)
-          // setErrorMessage(
-          //   "Authentication failed, please check user name and password"
-          // );
           dispatch({
             type: "setErrorMessage",
             data: "Authentication failed, please check user name and password",
@@ -64,11 +60,6 @@ const Register = ({ history }) => {
       <Header history={history}>Create Account</Header>
       <ErrorMessage />
       <Form onSubmit={handleSubmit}>
-        {/* {errorMessage && (
-          <Alert variant="danger">
-            <p data-testid="errorMessage">{errorMessage}</p>{" "}
-          </Alert>
-        )} */}
         <Form.Group controlId="formBasicName">
           <Form.Label>Full Name</Form.Label>
           <Form.Control

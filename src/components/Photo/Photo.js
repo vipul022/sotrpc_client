@@ -5,7 +5,6 @@ import ControlledCarousel from "../ControlledCarousel/ControlledCarousel";
 import { Container } from "react-bootstrap";
 import Header from "../Header/Header";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-
 const Photo = (props) => {
   const { store, dispatch } = useGlobalState();
   const { photos, fileState } = store;
